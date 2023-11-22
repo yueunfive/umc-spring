@@ -58,12 +58,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "misson7",
     "last_opened_file_path": "/Users/yueun-oh/Desktop/umc-spring",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -110,7 +111,7 @@
       <workItem from="1700136819767" duration="10173000" />
       <workItem from="1700283867338" duration="24000" />
       <workItem from="1700287006968" duration="3000" />
-      <workItem from="1700654394426" duration="6065000" />
+      <workItem from="1700654394426" duration="6381000" />
     </task>
     <servers />
   </component>
