@@ -1,4 +1,4 @@
-package umc.study.controller;
+package umc.study.dto.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

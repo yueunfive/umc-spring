@@ -18,6 +18,15 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    @PostMapping("/api/mission")
+    public ResponseEntity<MessageResponse> saveMemberMission(@RequestBody @Valid CreateMemberMissionRequest request) {
+        String message = memberService.addMission(request);
+        MessageResponse messageResponse = new MessageResponse(message);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(messageResponse);
+    }
+
     @GetMapping("/api/members")
     public ResponseEntity<Result> members() {
         List<Member> findMembers = memberService.findMembers();
@@ -34,14 +43,6 @@ public class MemberController {
         Long id = memberService.join(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new CreateMemberResponse(id));
-    }
-
-    @PostMapping("/api/mission")
-    public ResponseEntity<String> saveMemberMission(@RequestBody @Valid CreateMemberMissionRequest request) {
-        Long id = memberService.addMission(request);
-        String message = "미션이 추가되었습니다.";
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(message);
     }
 
 }

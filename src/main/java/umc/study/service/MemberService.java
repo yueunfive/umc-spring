@@ -21,6 +21,22 @@ public class MemberService {
     private final MissionService missionService;
     private final MemberMissionRepository memberMissionRepository;
 
+    //미션 추가
+    @Transactional
+    public String addMission(CreateMemberMissionRequest request) {
+        Member member = findById(request.getMemberId());
+        Mission mission = missionService.findById(request.getMissionId());
+
+        MemberMission memberMission = MemberMission.builder()
+                .status(MissionStatus.CHALLENGING)
+                .member(member)
+                .mission(mission)
+                .build();
+
+        MemberMission savedMemberMission = memberMissionRepository.save(memberMission);
+
+        return "미션이 추가되었습니다.";
+    }
 
     //등록
     @Transactional
@@ -49,20 +65,5 @@ public class MemberService {
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
     }
 
-    //미션 추가
-    @Transactional
-    public Long addMission(CreateMemberMissionRequest request) {
-        Member member = findById(request.getMemberId());
-        Mission mission = missionService.findById(request.getMissionId());
 
-        MemberMission memberMission = MemberMission.builder()
-                .status(MissionStatus.CHALLENGING)
-                .member(member)
-                .mission(mission)
-                .build();
-
-        MemberMission savedMemberMission = memberMissionRepository.save(memberMission);
-
-        return savedMemberMission.getId();
-    }
 }
