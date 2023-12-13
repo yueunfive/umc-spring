@@ -31,7 +31,7 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 40)
     private String address;
 
-    @Column(nullable = false, length = 40)
+    @Column(length = 40)
     private String specAddress;
 
     @Enumerated(EnumType.STRING)
@@ -39,7 +39,6 @@ public class Member extends BaseEntity {
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private SocialType socialType;
 
     @Enumerated(EnumType.STRING)
@@ -48,7 +47,7 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(nullable = false, length = 50)
+//    @Column(nullable = false, length = 50)
     private String email;
 
     private Integer point;
