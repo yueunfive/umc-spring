@@ -31,7 +31,6 @@ public class StoreService {
                 .address(request.getAddress())
                 .region(region)
                 .owner(owner)
-
                 .build();
 
         Store savedStore = storeRepository.save(store);

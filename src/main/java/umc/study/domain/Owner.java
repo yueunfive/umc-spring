@@ -1,9 +1,9 @@
 package umc.study.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
 import umc.study.domain.mapping.MemberPrefer;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
