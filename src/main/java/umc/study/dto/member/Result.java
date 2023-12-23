@@ -10,9 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Result<T> {
 
-    @ApiModelProperty(value = "전체 회원 수", example = "1")
+    @ApiModelProperty(value = "전체 수", example = "1")
     private int count;
 
-    @ApiModelProperty(value = "회원 정보 목록")
-    private List<FindMemberResponse> data;
+    @ApiModelProperty(value = "조회 목록")
+    private List<T> data;
 }

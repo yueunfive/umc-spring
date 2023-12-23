@@ -27,8 +27,8 @@ public class StoreService {
         Owner owner = ownerService.findById(request.getOwnerId());
 
         Store store = Store.builder()
-                .name(request.getName())
-                .address(request.getAddress())
+                .name(request.getStoreName())
+                .address(request.getStoreAddress())
                 .region(region)
                 .owner(owner)
                 .build();

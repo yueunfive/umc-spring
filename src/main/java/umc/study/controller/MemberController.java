@@ -20,43 +20,58 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/api/mission")
-    @ApiOperation(value = "회원 미션 등록", notes = "회원 정보에 미션을 등록한다.")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "request", value="등록할 회원-미션 ID", required = true, paramType = "body", dataTypeClass = CreateMemberMissionRequest.class)
-    })
-    @ApiResponses({
-            @ApiResponse(code = 201, message = "회원 미션 등록 성공"),
-            @ApiResponse(code = 500, message = "서버 내 오류")
-    })
-    public ResponseEntity<MessageResponse> saveMemberMission(@RequestBody @Valid CreateMemberMissionRequest request) {
-        String message = memberService.addMission(request);
-        MessageResponse messageResponse = new MessageResponse(message);
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(messageResponse);
-    }
-
     @GetMapping("/api/members")
     @ApiOperation(value = "회원 전체 조회", notes = "전체 회원 수와 목록을 조회한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "회원 전체 조회 성공"),
             @ApiResponse(code = 500, message = "서버 내 오류")
     })
-    public ResponseEntity<Result> members() {
+    public ResponseEntity<Result<FindMemberResponse>> members() {
         List<Member> findMembers = memberService.findMembers();
         List<FindMemberResponse> collect = findMembers.stream()
-                .map(m -> new FindMemberResponse(m.getId(), m.getName(), m.getAddress()))
+                .map(m -> FindMemberResponse.builder()
+                        .memberId(m.getId())
+                        .name(m.getName())
+                        .address(m.getAddress())
+                        .specAddress(m.getSpecAddress())
+                        .gender(m.getGender())
+                        .email(m.getEmail())
+                        .build())
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok()
-                .body(new Result(collect.size(), collect));
+                .body(new Result<>(collect.size(), collect));
     }
+
+    @GetMapping("/api/member/{memberId}")
+    @ApiOperation(value = "회원 단건 조회", notes = "회원 정보를 조회한다.")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "memberId", value = "조회할 회원 ID", example = "1", required = true, paramType = "path", dataTypeClass = Long.class)
+    })
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "회원 조회 성공"),
+            @ApiResponse(code = 500, message = "서버 내 오류")
+    })
+    public ResponseEntity<FindMemberResponse> member(@PathVariable Long memberId) {
+        Member findMember = memberService.findById(memberId);
+
+        FindMemberResponse findMemberResponse = FindMemberResponse.builder()
+                .memberId(findMember.getId())
+                .name(findMember.getName())
+                .address(findMember.getAddress())
+                .specAddress(findMember.getSpecAddress())
+                .gender(findMember.getGender())
+                .email(findMember.getEmail())
+                .build();
+
+        return ResponseEntity.ok().body(findMemberResponse);
+    }
+
 
     @PostMapping("/api/signup")
     @ApiOperation(value = "회원 가입", notes = "새로운 회원 정보를 등록한다.")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "request", value="등록할 회원 정보", required = true, paramType = "body", dataTypeClass = CreateMemberRequest.class)
+            @ApiImplicitParam(name = "request", value = "등록할 회원 정보", required = true, paramType = "body", dataTypeClass = CreateMemberRequest.class)
     })
     @ApiResponses({
             @ApiResponse(code = 201, message = "회원 등록 성공"),

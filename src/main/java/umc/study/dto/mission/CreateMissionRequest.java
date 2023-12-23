@@ -4,10 +4,7 @@ package umc.study.dto.mission;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Data
@@ -24,8 +21,8 @@ public class CreateMissionRequest {
     private Integer reward;
 
     @NotNull
-    @ApiModelProperty(value = "미션 마감기한", example = "2023-12-14 16:33:51.249445")
-    @Future // 현재 시간 이후의 날짜 허용
+    @ApiModelProperty(value = "미션 마감기한", example = "2023-12-25")
+    @FutureOrPresent
     private LocalDate deadline;
 
     @NotNull

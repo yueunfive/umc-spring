@@ -31,7 +31,7 @@ public class CreateMemberRequest {
     @ApiModelProperty(value = "이메일", example = "example1234@naver.com")
     private String email;
 
-    // TermsList랑 FoodCategroyList 스웨거 value, example 안 됨
+    // TermsList & FoodCategroyList : @ApiModelProperty 적용 X
     @ApiModelProperty(value = "동의한 선택 약관 id (1~2)\n" +
             "1 : 위치정보 제공\n" +
             "2 : 마케팅 수신 동의", example = "[1, 2]")

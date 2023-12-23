@@ -9,10 +9,10 @@ import java.time.LocalDate;
 public class CreateStoreRequest {
 
     @ApiModelProperty(value = "가게 이름", example = "붕어빵가게")
-    private String name;
+    private String storeName;
 
     @ApiModelProperty(value = "가게 주소", example = "동작구 상도동")
-    private String address;
+    private String storeAddress;
 
     @ApiModelProperty(value = "지역 ID", example = "1")
     private Long regionId;

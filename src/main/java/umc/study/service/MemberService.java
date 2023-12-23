@@ -22,29 +22,10 @@ import java.util.stream.Collectors;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final MissionService missionService;
-    private final MemberMissionRepository memberMissionRepository;
     private final FoodCategoryRepository foodCategoryRepository;
     private final TermsRepository termsRepository;
     private final MemberAgreeRepository memberAgreeRepository;
     private final MemberPreferRepository memberPreferRepository;
-
-    //미션 추가
-    @Transactional
-    public String addMission(CreateMemberMissionRequest request) {
-        Member member = findById(request.getMemberId());
-        Mission mission = missionService.findById(request.getMissionId());
-
-        MemberMission memberMission = MemberMission.builder()
-                .status(MissionStatus.CHALLENGING)
-                .member(member)
-                .mission(mission)
-                .build();
-
-        MemberMission savedMemberMission = memberMissionRepository.save(memberMission);
-
-        return "미션이 추가되었습니다.";
-    }
 
     // 회원 가입
     @Transactional

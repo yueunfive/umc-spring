@@ -31,4 +31,13 @@ public class MemberMission extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Mission mission;
+
+    // 엔티티 내에서 비즈니스 로직을 처리
+    public void updateStatusToCompleted() {
+        if (this.status == MissionStatus.COMPLETE) {
+            throw new IllegalStateException("이미 성공한 미션입니다.");
+        }
+
+        this.status = MissionStatus.COMPLETE;
+    }
 }
