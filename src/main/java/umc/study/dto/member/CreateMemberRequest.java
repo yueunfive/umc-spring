@@ -8,6 +8,9 @@ import umc.study.domain.enums.SocialType;
 import umc.study.domain.mapping.MemberAgree;
 import umc.study.domain.mapping.MemberPrefer;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 
@@ -16,19 +19,23 @@ public class CreateMemberRequest {
     // 회원 등록(POST) - 요청
 
     @ApiModelProperty(value = "회원 이름", example = "오유은")
+    @NotBlank(message = "이름을 입력해주세요.")
     private String name;
 
     @ApiModelProperty(value = "지역", example = "서울")
+    @NotBlank(message = "주소를 입력해주세요.")
     private String address;
 
     @ApiModelProperty(value = "상세 주소", example = "동작구 상도동")
+    @NotBlank(message = "상세 주소를 입력해주세요.")
     private String specAddress;
 
-    // ENUM과는 상이한 값 입력시 예외 터트리기
     @ApiModelProperty(value = "성별 (가능한 값: MALE, FEMALE, NONE)", example = "MALE", allowableValues = "MALE, FEMALE, NONE")
+    @NotNull(message = "성별을 선택해주세요.")
     private Gender gender;
 
     @ApiModelProperty(value = "이메일", example = "example1234@naver.com")
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$", message = "올바른 이메일 형식이어야 합니다.")
     private String email;
 
     // TermsList & FoodCategroyList : @ApiModelProperty 적용 X

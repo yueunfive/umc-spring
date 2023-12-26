@@ -61,9 +61,10 @@ public class MemberService {
         return member.getId();
     }
 
+    // 중복 회원 검증(email)
     private void validateDuplicateMember(CreateMemberRequest request) {
-        List<Member> findMembers = memberRepository.findByName(request.getName());
-        if (!findMembers.isEmpty()) {
+        Member findMemberByEmail = memberRepository.findByEmail(request.getEmail());
+        if (findMemberByEmail != null) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
@@ -78,6 +79,4 @@ public class MemberService {
         return memberRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
     }
-
-
 }

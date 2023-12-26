@@ -7,6 +7,8 @@ import umc.study.domain.Member;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
 import umc.study.dto.review.CreateReviewRequest;
+import umc.study.exception.CustomErrorCode;
+import umc.study.exception.CustomException;
 import umc.study.repository.ReviewRepository;
 
 @RequiredArgsConstructor
@@ -23,6 +25,12 @@ public class ReviewService {
         Store store = storeService.findById(request.getStoreId());
         Member member = memberService.findById(request.getMemberId());
 
+        Float score = request.getScore();
+
+        if (score == null || score < 1 || score > 5  || !isInteger(score)) {
+            throw new CustomException(CustomErrorCode.SCORE_NUM_ERROR);
+        }
+
         Review review = Review.builder()
                 .body(request.getBody())
                 .score(request.getScore())
@@ -34,4 +42,10 @@ public class ReviewService {
 
         return savedReview.getId();
     }
+
+    // score가 정수인지 체크(save 메서드에서 사용)
+    private boolean isInteger(float score) {
+        return (score == Math.floor(score)) && !Float.isInfinite(score);
+    }
 }
+

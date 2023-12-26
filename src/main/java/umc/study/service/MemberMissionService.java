@@ -21,6 +21,10 @@ public class MemberMissionService {
     public List<MemberMissionResponse> findByMemberId(Long memberId) {
         List<MemberMission> memberMissions = memberMissionRepository.findByMemberId(memberId);
 
+        if (memberMissions.isEmpty()) {
+            throw new IllegalArgumentException("not found: " + memberId);
+        }
+
         List<MemberMissionResponse> missionResponses = memberMissions.stream()
                 .map(memberMission -> {
                     Mission mission = memberMission.getMission();
@@ -40,7 +44,7 @@ public class MemberMissionService {
 
     public void updateStatus(long id) {
         MemberMission memberMission = memberMissionRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 ID는 유효하지 않습니다."));
+                .orElseThrow(() -> new IllegalArgumentException(id+"는 유효하지 않은 ID입니다."));
 
         memberMission.updateStatusToCompleted();
         memberMissionRepository.save(memberMission);
