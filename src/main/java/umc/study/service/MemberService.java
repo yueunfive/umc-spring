@@ -3,16 +3,10 @@ package umc.study.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import umc.study.domain.FoodCategory;
-import umc.study.domain.Member;
-import umc.study.domain.Mission;
-import umc.study.domain.Terms;
-import umc.study.domain.enums.MissionStatus;
+import umc.study.domain.*;
 import umc.study.domain.mapping.MemberAgree;
-import umc.study.domain.mapping.MemberMission;
 import umc.study.domain.mapping.MemberPrefer;
 import umc.study.dto.member.CreateMemberRequest;
-import umc.study.dto.member.CreateMemberMissionRequest;
 import umc.study.repository.*;
 
 import java.util.List;
@@ -79,4 +73,5 @@ public class MemberService {
         return memberRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
     }
+
 }

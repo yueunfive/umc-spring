@@ -1,5 +1,6 @@
 package umc.study.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -36,6 +37,12 @@ public class GlobalExceptionHandler {
                 .map(error -> error.getField() + ": " + error.getDefaultMessage())
                 .collect(Collectors.joining(", "));
         MessageResponse messageResponse = new MessageResponse(errorMessage);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponse);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<MessageResponse> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        MessageResponse messageResponse = new MessageResponse(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponse);
     }
 }

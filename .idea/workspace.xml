@@ -5,33 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9cf6b85-3d6e-4911-be5c-cb7e56d09e8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/controller/MissionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/controller/MissionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/dto/member/CreateMemberRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/dto/member/CreateMemberRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/dto/review/CreateReviewRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/dto/review/CreateReviewRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/repository/MemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/repository/MemberRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/service/MemberMissionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/service/MemberMissionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/service/MemberService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc/study/service/ReviewService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc/study/service/ReviewService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/GlobalExceptionHandler.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/dto/member/CreateMemberRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/dto/member/CreateMemberRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/dto/review/CreateReviewRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/dto/review/CreateReviewRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/dto/store/CreateStoreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/dto/store/CreateStoreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/controller/MissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/controller/MissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/controller/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/dto/member/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/dto/member/MessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/dto/mission/CreateMissionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/dto/mission/CreateMissionRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/repository/MemberMissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/repository/MemberMissionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/repository/MissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/repository/MissionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/repository/StoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/repository/StoreRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/service/MemberMissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/service/MemberMissionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/service/MissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/service/MissionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/study/service/StoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/study/service/StoreService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +164,8 @@
       <workItem from="1703320544277" duration="6302000" />
       <workItem from="1703489629552" duration="417000" />
       <workItem from="1703495135864" duration="11224000" />
-      <workItem from="1703513275866" duration="6452000" />
+      <workItem from="1703513275866" duration="6497000" />
+      <workItem from="1703669619259" duration="11622000" />
     </task>
     <servers />
   </component>

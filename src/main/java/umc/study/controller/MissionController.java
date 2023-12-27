@@ -2,27 +2,20 @@ package umc.study.controller;
 
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import umc.study.domain.Member;
-import umc.study.domain.Mission;
-import umc.study.domain.enums.MissionStatus;
-import umc.study.domain.mapping.MemberMission;
-import umc.study.dto.member.CreateMemberMissionRequest;
-import umc.study.dto.member.FindMemberResponse;
-import umc.study.dto.member.MessageResponse;
-import umc.study.dto.member.Result;
-import umc.study.dto.mission.CreateMissionRequest;
-import umc.study.dto.mission.CreateMissionResponse;
-import umc.study.dto.mission.MemberMissionResponse;
-import umc.study.dto.mission.RegionMissionResponse;
+import umc.study.dto.member.*;
+import umc.study.dto.mission.*;
 import umc.study.service.MemberMissionService;
 import umc.study.service.MissionService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -80,20 +73,27 @@ public class MissionController {
                 .body(new Result<>(missions.size(), missions));
     }
 
-    @GetMapping(value = "/missions/member", params = "memberId")
+    @GetMapping(value = "/{memberId}/missions")
     @ApiOperation(value = "사용자 미션 조회", notes = "사용자의 미션 목록을 조회한다.")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "memberId", value = "사용자 ID", example = "1", required = true, paramType = "query", dataTypeClass = Long.class)
+            @ApiImplicitParam(name = "pageNumber", value = "조회할 페이지 (1부터 시작)", example = "1", paramType = "query", dataTypeClass = Integer.class),
+            @ApiImplicitParam(name = "pageSize", value = "한 페이지에 조회할 개수", example = "10", paramType = "query", dataTypeClass = Integer.class)
     })
     @ApiResponses({
             @ApiResponse(code = 200, message = "사용자 미션 조회 성공"),
+            @ApiResponse(code = 400, message = "사용자 정보를 찾을 수 없음"),
             @ApiResponse(code = 500, message = "서버 내 오류")
     })
-    public ResponseEntity<Result<MemberMissionResponse>> getMissions(@RequestParam("memberId") Long memberId) {
-        List<MemberMissionResponse> missionResponses = memberMissionService.findByMemberId(memberId);
+    public ResponseEntity<Page<MemberMissionPage.MemberMissionListDTO>> getMissionList(@RequestParam(defaultValue = "1") int pageNumber,
+                                                                                 @RequestParam(defaultValue = "10") int pageSize,
+                                                                                 @PathVariable Long memberId) {
 
-        return ResponseEntity.ok().body(new Result<>(missionResponses.size(), missionResponses));
+        Pageable pageable = getPageRequestByCreateDate(pageNumber - 1, pageSize);
+        Page<MemberMissionPage.MemberMissionListDTO> response = memberMissionService.getPage(memberId, pageable);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 
     @PatchMapping("/mission/complete/{memberMissionId}")
     @ApiOperation(value = "미션 성공 인증", notes = "미션 성공 인증 API")
@@ -109,5 +109,12 @@ public class MissionController {
         memberMissionService.updateStatus(memberMissionId);
         MessageResponse messageResponse = new MessageResponse("미션 성공 요청이 승인되었습니다.");
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(messageResponse);
+    }
+
+
+    private Pageable getPageRequestByCreateDate(int pageNumber, int pageSize) {
+        return PageRequest.of(pageNumber, pageSize, Sort.by(
+                Sort.Order.desc("createdAt")
+        ));
     }
 }
