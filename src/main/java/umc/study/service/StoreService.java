@@ -1,6 +1,7 @@
 package umc.study.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.domain.*;
@@ -25,6 +26,17 @@ public class StoreService {
     public Long save(CreateStoreRequest request) {
         Region region = regionService.findById(request.getRegionId());
         Owner owner = ownerService.findById(request.getOwnerId());
+
+        Store existingStore = storeRepository.findByNameAndAddressAndRegionAndOwner(
+                request.getStoreName(),
+                request.getStoreAddress(),
+                region,
+                owner
+        );
+
+        if (existingStore != null) {
+            throw new IllegalStateException("이미 등록된 가게 정보입니다.");
+        }
 
         Store store = Store.builder()
                 .name(request.getStoreName())

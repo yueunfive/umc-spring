@@ -8,6 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class MessageResponse {
 
-    @ApiModelProperty(value = "응답 메시지", example = "미션이 추가되었습니다")
+    @ApiModelProperty(value = "응답 메시지", example="success")
     private String message;
 }

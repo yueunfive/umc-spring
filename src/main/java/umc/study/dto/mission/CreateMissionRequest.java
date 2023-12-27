@@ -25,7 +25,7 @@ public class CreateMissionRequest {
     @FutureOrPresent
     private LocalDate deadline;
 
-    @NotNull
+    @NotBlank
     @ApiModelProperty(value = "미션 상세정보", example = "10000원 이상 구매하기")
     private String missionSpec;
 }
