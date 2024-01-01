@@ -29,7 +29,7 @@ public class MemberService {
 
         List<MemberAgree> memberAgreeList = request.getTermsList().stream()
                 .map(termsId -> {
-                    Terms terms = termsRepository.findById(termsId).orElseThrow(() -> new IllegalArgumentException("Invalid term ID: " + termsId));
+                    Terms terms = termsRepository.findById(termsId).orElseThrow(() -> new IllegalArgumentException("유효하지 않는 termsId"));
                     return MemberAgree.builder()
                             .member(member)
                             .terms(terms)
@@ -39,7 +39,7 @@ public class MemberService {
 
         List<MemberPrefer> memberPreferList = request.getFoodCategoryList().stream()
                 .map(foodCategoryId -> {
-                    FoodCategory foodCategory = foodCategoryRepository.findById(foodCategoryId).orElseThrow(() -> new IllegalArgumentException("Invalid food category ID: " + foodCategoryId));
+                    FoodCategory foodCategory = foodCategoryRepository.findById(foodCategoryId).orElseThrow(() -> new IllegalArgumentException("유효하지 않은 food category ID"));
                     return MemberPrefer.builder()
                             .member(member)
                             .foodCategory(foodCategory)
